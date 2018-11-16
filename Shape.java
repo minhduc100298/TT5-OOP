@@ -1,90 +1,84 @@
-public abstract class Shape {
-    protected double Area, Volume;
-    protected String Name;
-
-    protected double calArea() {
-        return this.Area;
+abstract class Shape {
+    double calArea() {
+        return 0;
     }
 
-    protected double calVolume() {
-        return this.Volume;
+    double calVolume() {
+        return 0;
     }
 
-    protected abstract String getName();
+    abstract String getName();
 }
 
 class Point extends Shape {
-    protected double x, y;
+    double x, y;
 
-    protected Point(double x, double y) {
+    Point(double x, double y) {
         this.x = x;
         this.y = y;
     }
 
     @Override
-    protected double calArea() {
+    double calArea() {
         return super.calArea();
     }
 
     @Override
-    protected double calVolume() {
+    double calVolume() {
         return super.calVolume();
     }
 
     @Override
-    protected String getName() {
-        Name = "Point";
-        return Name;
+    String getName() {
+        return "Point";
     }
 }
 
 class Circle extends Point {
-    protected double r;
+    double r;
 
-    protected Circle(double x, double y, double r) {
+    Circle(double x, double y, double r) {
         super(x, y);
         this.r = r;
     }
 
     @Override
-    protected double calArea() {
+    double calArea() {
         return Math.PI * Math.pow(r, 2);
     }
 
     @Override
-    protected double calVolume() {
+    double calVolume() {
         System.out.println("A circle does not have a volume");
         return super.calVolume();
     }
 
     @Override
-    protected String getName() {
-        Name = "Circle";
-        return Name;
+    String getName() {
+        return "Circle";
     }
 }
 
 class Cylinder extends Circle {
-    protected double h;
+    private double h;
 
-    protected Cylinder(double x, double y, double r, double h) {
+    Cylinder(double x, double y, double r, double h) {
         super(x, y, r);
         this.h = h;
     }
 
     @Override
-    protected double calArea() {
+    double calArea() {
         return 2 * Math.PI * r * (h + r);
     }
 
     @Override
-    protected double calVolume() {
+    double calVolume() {
         return Math.PI * Math.pow(r, 2) * h;
     }
 
     @Override
-    protected String getName() {
-        Name = "Cylinder";
-        return Name;
+    String getName() {
+        return "Cylinder";
     }
 }
